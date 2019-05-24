@@ -12,7 +12,7 @@ pool:
 steps:
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '*/pt-pal-frontend'
+    SourceFolder: 'pt-pal-frontend'
     Contents: '**'
     TargetFolder: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)'
 - task: AzureFileCopy@2
