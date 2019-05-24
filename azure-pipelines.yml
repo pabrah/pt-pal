@@ -41,7 +41,6 @@ steps:
   inputs:
     PathtoPublish: "$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip"
     ArtifactName: 'drop'
-    publishLocation: "Filepath"
     TargetPath: "$(System.DefaultWorkingDirectory)/publish/$(Build.BuildId).zip"
 - task: AzureFunctionApp@1
   inputs:
