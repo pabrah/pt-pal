@@ -16,9 +16,12 @@ namespace pt_pal_backend
     {
         [FunctionName("RegisterTrainingSchedule")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)] ExerciseWeekSchedule regExercise,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] ExerciseWeekSchedule regExercise,
             ILogger log)
         {
+            if (regExercise == null)
+                return new OkObjectResult(new ExerciseWeekSchedule() { Owner = "Petter", ExerciseDays = new List<ExerciseDaySchedule>() { new ExerciseDaySchedule() { Day = 1, ExercisesForToday = null } } });
+
             log.LogInformation("C# HTTP trigger function processed a request.");
             if(regExercise==null || regExercise.ExerciseDays==null || string.IsNullOrEmpty(regExercise.Owner) || regExercise.ExerciseDays.Count==0)
                 return new BadRequestObjectResult("Please pass exercises in to register a training");
