@@ -27,16 +27,14 @@ steps:
     dotnet build --configuration Release
 - task: DotNetCoreCLI@2
   inputs:
-    command: publish
-    arguments: '--configuration Release --output publish_output'
-    projects: '*.csproj'
-    publishWebProjects: false
-    modifyOutputPath: true
-    zipAfterPublish: false
+    command: 'build'
+    projects: 'pt-pal-backend/*'
+    feedsToUse: 'select'
+    versioningScheme: 'off'
 - task: ArchiveFiles@2
   displayName: "Archive files"
   inputs:
-    rootFolderOrFile: "$(System.DefaultWorkingDirectory)/publish_output/s"
+    rootFolderOrFile: "$(System.DefaultWorkingDirectory)/pt-pal-backend/publish_output/s"
     includeRootFolder: false
     archiveFile: "$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip"
 - task: PublishBuildArtifacts@1
