@@ -28,7 +28,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
-    projects: 'pt-pal-backend/*'
+    projects: 'pt-pal.sln'
     feedsToUse: 'select'
     versioningScheme: 'off'
 - task: ArchiveFiles@2
