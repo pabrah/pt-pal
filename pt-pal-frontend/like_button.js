@@ -47,7 +47,7 @@ class ScheduleButton extends React.Component {
     }
 }
 const buttons = (
-    <ScheduleButton />
+    <ScheduleButton> </ScheduleButton>
 )
 const domContainer = document.querySelector('#buttons');
 ReactDOM.render(buttons, domContainer);
