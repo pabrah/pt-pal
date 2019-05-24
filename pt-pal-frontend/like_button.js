@@ -1,5 +1,4 @@
 'use strict';
-import axios from 'axios'
 
 const e = React.createElement;
 
@@ -17,7 +16,31 @@ class LikeButton extends React.Component {
         );
     }
     callReg() {
-        axios.post('https://pt-pal.azurewebsites.net/api/RegisterTrainingSchedule', '"ExerciseWeekSchedule":{"Owner":"Petter", "ExerciseDays":[{"Day":1, "ExercisesForToday":{"Name":"Bench Press"}}]}').then(response => console.log(response))
+        fetch('https://pt-pal.azurewebsites.net/api/RegisterTrainingSchedule',
+        {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(
+            {
+                Owner: 'Petter',
+                ExerciseDays: [
+                {
+                    Day: 1,
+                    ExercisesForToday: [{
+                        Name: "Bench Press"
+                    }]
+                },
+                {
+                    Day: 2,
+                    ExercisesForToday: [{
+                        Name: "Interval Running Indoor"
+                    }]
+                }]
+            }),
+        })
     }
 }
 

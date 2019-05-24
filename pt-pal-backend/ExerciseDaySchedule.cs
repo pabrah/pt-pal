@@ -7,7 +7,7 @@ namespace pt_pal_backend
     public class ExerciseDaySchedule
     {
         private int _day;
-        public List<IExercise> ExercisesForToday { get; set; }
+        public List<Exercise> ExercisesForToday { get; set; }
         public int Day {
             get { return _day; }
             set {
