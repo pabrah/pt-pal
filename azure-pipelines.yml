@@ -33,7 +33,7 @@ steps:
     zipAfterPublish: true
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: "$(System.DefaultWorkingDirectory)/pt-pal-backend/bin/Release/netcoreapp2.1/bin"
+    PathtoPublish: "$(System.DefaultWorkingDirectory)/pt-pal-backend/bin/Release/netcoreapp2.1"
     ArtifactName: 'drop'
     publishLocation: "FilePath"
     TargetPath: "$(Build.ArtifactStagingDirectory)/"
