@@ -1,4 +1,5 @@
 'use strict';
+import axios from 'axios'
 
 const e = React.createElement;
 
@@ -8,18 +9,17 @@ class LikeButton extends React.Component {
     this.state = { liked: false };
   }
 
-  render() {
-    if (this.state.liked) {
-      return 'You liked this.';
+    render() {
+        return e(
+            'button',
+            { onClick: () => this.callReg() },
+            'SendSchedule'
+        );
     }
-
-    return e(
-      'button',
-      { onClick: () => this.setState({ liked: true }) },
-      'Like'
-    );
-  }
+    callReg() {
+        axios.post('https://pt-pal.azurewebsites.net/api/RegisterTrainingSchedule', '"ExerciseWeekSchedule":{"Owner":"Petter", "ExerciseDays":[{"Day":1, "ExercisesForToday":{"Name":"Bench Press"}}]}').then(response => console.log(response))
+    }
 }
 
-const domContainer = document.querySelector('#like_button_container');
+const domContainer = document.querySelector('#SendSchedule');
 ReactDOM.render(e(LikeButton), domContainer);
