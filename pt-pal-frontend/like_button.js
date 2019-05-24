@@ -8,19 +8,8 @@ class Button extends React.Component {
         this.state = { liked: false };
     }
 
-    render() {
-        return e(
-            'button',
-            { onClick: () => this.callReg() },
-            'SendSchedule'
-        );
-        return f(
-            'button', {
-                onClick: () => this.getSchedule()
-            },
-            'GetSchedule'
-        );
-    }
+
+
     callReg() {
         fetch('https://pt-pal.azurewebsites.net/api/RegisterTrainingSchedule',
             {
@@ -48,9 +37,11 @@ class Button extends React.Component {
                     }),
             })
     }
+    getSchedule() {
+        alert("button was clicked");
+    }
 }
+const buttons = "<button id=SendSchedule onClick=callReg()>Send Schedule</button><br/><button id=GetSchedule onclick=getSchedule()>Get Schedule</button>"
 
-const domContainer = document.querySelector('#SendSchedule');
-ReactDOM.render(e(Button), domContainer);
-const getSchedule = document.querySelector('#GetSchedule');
-ReactDOM.render(f(Button), getSchedule);
+const domContainer = document.querySelector('#buttons');
+ReactDOM.render(buttons, domContainer);
