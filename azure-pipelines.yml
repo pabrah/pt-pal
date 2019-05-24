@@ -34,10 +34,10 @@ steps:
     zipAfterPublish: true
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: "$(System.DefaultWorkingDirectory)/pt-pal-backend/*.zip"
+    PathtoPublish: "$(System.DefaultWorkingDirectory)/pt-pal-backend/bin/Debug/netcoreapp2.1/bin"
     ArtifactName: 'drop'
     publishLocation: "FilePath"
-    TargetPath: "$(Build.ArtifactStagingDirectory)"
+    TargetPath: "$(Build.ArtifactStagingDirectory)/"
 - task: AzureFunctionApp@1
   inputs:
     azureSubscription: 'Free Trial(eb3ba4ad-1f4e-4ad4-b676-7c4a3dfe7925)'
