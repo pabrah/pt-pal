@@ -1,0 +1,20 @@
+﻿{
+  "disabled": false,
+  "bindings": [
+    {
+      "authLevel": "function",
+      "name": "PtPal",
+      "type": "httpTrigger",
+      "direction": "in",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "name": "$return",
+      "type": "http",
+      "direction": "out"
+    }
+  ]
+}
