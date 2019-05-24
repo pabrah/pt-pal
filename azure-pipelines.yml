@@ -47,5 +47,5 @@ steps:
     azureSubscription: 'Free Trial(eb3ba4ad-1f4e-4ad4-b676-7c4a3dfe7925)'
     appType: 'functionApp'
     appName: 'pt-pal'
-    package: "$(System.DefaultWorkingDirectory)/publish/$(Build.BuildId).zip"
+    package: "$(Release.Artifacts.drop)"
     deploymentMethod: 'auto'
