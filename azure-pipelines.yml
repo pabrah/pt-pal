@@ -22,12 +22,11 @@ steps:
     Destination: 'AzureBlob'
     storage: 'ptester'
     ContainerName: '$web'
-- script: |
-    dotnet restore
-    dotnet build --configuration Release
+- script: dotnet restore
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
+    arguments: '--configuration Release'
     projects: 'pt-pal-backend/pt-pal-backend.csproj'
     feedsToUse: 'select'
     versioningScheme: 'off'
