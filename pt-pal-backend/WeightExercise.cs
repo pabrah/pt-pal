@@ -7,5 +7,6 @@ namespace pt_pal_backend
     public class Exercise 
     {
         public string Name { get; set; }
+        public List<TrainingSet> Set { get; set; }
     }
 }
