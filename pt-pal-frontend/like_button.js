@@ -2,14 +2,19 @@
 
 const e = React.createElement;
 
-class Button extends React.Component {
+class ScheduleButton extends React.Component {
     constructor(props) {
         super(props);
         this.state = { liked: false };
     }
 
-
-
+    render() {
+        return <div>
+            <button id="SendSchedule" onClick="callReg()">Send Schedule</button>
+            <br />
+            <button id="GetSchedule" onclick="getSchedule()">Get Schedule</button>
+        </div>;
+    }
     callReg() {
         fetch('https://pt-pal.azurewebsites.net/api/RegisterTrainingSchedule',
             {
@@ -41,7 +46,8 @@ class Button extends React.Component {
         alert("button was clicked");
     }
 }
-const buttons = "<button id=SendSchedule onClick=callReg()>Send Schedule</button><br/><button id=GetSchedule onclick=getSchedule()>Get Schedule</button>"
-
+const buttons = (
+    <ScheduleButton />
+)
 const domContainer = document.querySelector('#buttons');
 ReactDOM.render(buttons, domContainer);
