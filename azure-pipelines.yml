@@ -10,8 +10,42 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: ArchiveFiles@2
+- task: CopyFiles@2
   inputs:
-    rootFolderOrFile: '$(build.sourcesDirectory)'
+    SourceFolder: '*/pt-pal-frontend'
+    Contents: '**'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)'
+- task: AzureFileCopy@2
+  inputs:
+    SourcePath: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)'
+    azureSubscription: 'Free Trial(eb3ba4ad-1f4e-4ad4-b676-7c4a3dfe7925)'
+    Destination: 'AzureBlob'
+    storage: 'ptester'
+    ContainerName: '$web'
+- script: |
+    dotnet restore
+    dotnet build --configuration Release
+- task: DotNetCoreCLI@2
+  inputs:
+    command: publish
+    arguments: '--configuration Release --output publish_output'
+    projects: '*.csproj'
+    publishWebProjects: false
+    modifyOutputPath: true
+    zipAfterPublish: false
+- task: ArchiveFiles@2
+  displayName: "Archive files"
+  inputs:
+    rootFolderOrFile: "$(System.DefaultWorkingDirectory)/publish_output/s"
     includeRootFolder: false
+    archiveFile: "$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip"
 - task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(System.DefaultWorkingDirectory)/$(Build.BuildId).zip'
+    ArtifactName: 'drop'
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    connectionType: 'AzureRM'
+    azureSubscription: 'Free Trial(eb3ba4ad-1f4e-4ad4-b676-7c4a3dfe7925)'
+    appType: 'functionApp'
+    webAppName: 'pt-pal'
