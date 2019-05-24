@@ -41,11 +41,12 @@ steps:
   inputs:
     PathtoPublish: "$(System.DefaultWorkingDirectory)/build$(Build.BuildId).zip"
     ArtifactName: 'drop'
-    TargetPath: "$(System.DefaultWorkingDirectory)/publish/$(Build.BuildId).zip"
+    publishLocation: "FilePath"
+    TargetPath: "$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip"
 - task: AzureFunctionApp@1
   inputs:
     azureSubscription: 'Free Trial(eb3ba4ad-1f4e-4ad4-b676-7c4a3dfe7925)'
     appType: 'functionApp'
     appName: 'pt-pal'
-    package: "$(Release.Artifacts.drop)"
+    package: "$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip"
     deploymentMethod: 'auto'
