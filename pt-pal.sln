@@ -11,6 +11,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pt-pal-frontend", "pt-pal-f
 		pt-pal-frontend\like_button.js = pt-pal-frontend\like_button.js
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{1FB0909F-FE3C-4500-82AB-CD3F1D3FBB93}"
+	ProjectSection(SolutionItems) = preProject
+		react-dom.development.js = react-dom.development.js
+		react.development.js = react.development.js
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +30,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1FB0909F-FE3C-4500-82AB-CD3F1D3FBB93} = {5B47AB71-7874-420B-B51E-980F3F80F67D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A3C607D7-F391-4D29-909D-E1838629A0DB}

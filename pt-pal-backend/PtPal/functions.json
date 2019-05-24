@@ -3,7 +3,7 @@
   "bindings": [
     {
       "authLevel": "function",
-      "name": "PtPal",
+      "name": "req",
       "type": "httpTrigger",
       "direction": "in",
       "methods": [

@@ -10,11 +10,11 @@ using Newtonsoft.Json;
 
 namespace pt_pal_backend
 {
-    public static class PtPal
+    public static class PtPalInfo
     {
-        [FunctionName("Pt-Pal")]
+        [FunctionName("PtPalInfo")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = "")] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
             ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
