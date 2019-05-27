@@ -7,6 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "pt-pal-backend", "pt-pal-ba
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pt-pal-frontend", "pt-pal-frontend", "{5B47AB71-7874-420B-B51E-980F3F80F67D}"
 	ProjectSection(SolutionItems) = preProject
+		board.css = board.css
 		pt-pal-frontend\index.html = pt-pal-frontend\index.html
 		pt-pal-frontend\like_button.js = pt-pal-frontend\like_button.js
 	EndProjectSection
